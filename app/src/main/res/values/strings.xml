@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">seneFit</string>
+    <string name="top"><u><b><i>Login to myID</i></b></u></string>
+    <string name="info1">Please Enter Your Myid Username and paswword to</string>
+    <string name="info2">change Your Fitness Life Style For Good</string>
+
+    <string-array name="exercise_array">
+        <item>Flat Barbell or Dumbbell Bench Press</item>
+        <item>Incline Barbell or Dumbbell Bench Press</item>
+        <item>Decline Barbell or Dumbbell Bench Press</item>
+        <item>Flat Chest Press Machine</item>
+        <item>Incline Chest Press Machine</item>
+        <item>Decline Chest Press Machine</item>
+        <item>Dips (on parallel bars with slight forward lean)</item>
+        <item>Push-Ups</item>
+        <item>Flat Dumbbell Flyes</item>
+        <item> Incline Dumbbell Flyes</item>
+        <item> Decline Dumbbell Flyes</item>
+        <item>Pec Deck Machine</item>
+        <item>Cable Crossovers/Cable Flyes</item>
+        <item> Pull-Ups</item>
+        <item>Chin-Ups</item>
+        <item>Lat Pull-Downs</item>
+        <item>  Bent Over Barbell or Dumbbell Rows</item>
+        <item> T-Bar Rows</item>
+        <item>Seated Cable Rows</item>
+        <item>Chest Supported Barbell or Dumbbell Rows</item>
+        <item> Chest Supported Machine Rows</item>
+        <item>Inverted Rows</item>
+        <item> Barbell, Dumbbell or Machine Shrugs</item>
+        <item>Seated Overhead Barbell or Dumbbell Press</item>
+        <item>Standing Overhead Barbell or Dumbbell Press</item>
+        <item>Overhead Machine Press</item>
+        <item> Arnold Press</item>
+        <item>Barbell, Dumbbell or Machine Upright Rows</item>
+        <item> Dumbbell, Cable or Machine Lateral Raises</item>
+        <item>Dumbbell, Cable or Machine Front Raises</item>
+        <item>Barbell, Dumbbell, or Machine Rear Delt Rows, Raises or Flyes</item>
+        <item> Barbell or Dumbbell Squats</item>
+        <item>Barbell or Dumbbell Front Squats</item>
+        <item> Barbell or Dumbbell Split Squats</item>
+        <item>Barbell or Dumbbell Lunges</item>
+        <item>Barbell or Dumbbell Step-Ups</item>
+        <item>Leg Press</item>
+        <item>Machine Squat/Hack Squat</item>
+        <item>Leg Extensions</item>
+        <item>  Barbell or Dumbbell Romanian Deadlifts</item>
+        <item>Barbell or Dumbbell Straight Leg Deadlifts</item>
+        <item>Barbell or Dumbbell Sumo Deadlifts</item>
+        <item> Glute-Ham Raises</item>
+        <item>Hyperextensions</item>
+        <item>Cable Pull-Throughs</item>
+        <item>Good-Mornings</item>
+        <item> Leg Curls</item>
+        <item>Standing Barbell or Dumbbell Curls</item>
+        <item> Barbell or Dumbbell Preacher Curls</item>
+        <item> Seated Dumbbell Curls</item>
+        <item> Incline Dumbbell Curls</item>
+        <item> Hammer Curls</item>
+        <item>Concentration Curls</item>
+        <item>Cable Curls/</item>
+        <item> Biceps Curl Machine</item>
+        <item> Dips (on parallel bars, elbows close to body, without forward lean)</item>
+        <item> Flat Close Grip Bench Press</item>
+        <item> Decline Close Grip Bench Press</item>
+        <item>Close Grip Push-Ups</item>
+        <item> Laying Barbell or Dumbbell Triceps Extensions</item>
+        <item> Skull Crushers</item>
+        <item> Overhead Barbell or Dumbbell Triceps Extensions</item>
+        <item> Cable Press-Downs</item>
+        <item> Bench Dips</item>
+    </string-array>
+</resources>

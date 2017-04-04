@@ -26,16 +26,19 @@ public class custAdapter extends BaseAdapter {
     private String creation_date;
     private String category;
     private DbHelper db;
+    private int imgId;
 
     Context context;;
     List<Exercise> listEx;
     int cnt;
+    private int[] img;
 
 
     //constructor to set up our instance variables
-    public custAdapter(exlist c, List<Exercise> a){
+    public custAdapter(exlist c, List<Exercise> a, int[] img){
         context = c;
         listEx = a;
+        this.img = img;
     }
 
 
@@ -87,6 +90,7 @@ public class custAdapter extends BaseAdapter {
                name_original = items.getName_original();
                creation_date = items.getCreation_date();
                category = items.getCategory();
+               imgId = img[position];
 
                Intent intent = new Intent(context,viewtoadd.class);
                Bundle bee = new Bundle();
@@ -98,6 +102,7 @@ public class custAdapter extends BaseAdapter {
                bee.putString("n_OG",name_original);
                bee.putString("cdate",creation_date);
                bee.putString("cat5",category);
+               bee.putInt("imageId",imgId);
 
                intent.putExtras(bee);
                context.startActivity(intent);

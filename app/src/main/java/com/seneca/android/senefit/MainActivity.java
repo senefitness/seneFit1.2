@@ -14,7 +14,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private Session session;
     private DbHelper db;
-    Button btnLogout,viewList;
+    Button btnLogout,viewList,viewListOfBody;
     TextView textView;
 
     @Override
@@ -53,6 +53,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,exlist.class));
+            }
+        });
+
+        viewListOfBody = (Button) findViewById(R.id.allMuscle);
+        viewListOfBody.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,musclelist.class));
             }
         });
 

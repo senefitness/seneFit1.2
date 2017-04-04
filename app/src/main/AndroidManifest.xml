@@ -21,7 +21,8 @@
         <activity android:name=".SignUp" />
         <activity android:name=".Login" />
         <activity android:name=".exlist" />
-        <activity android:name=".viewtoadd"></activity>
+        <activity android:name=".viewtoadd" />
+        <activity android:name=".musclelist"></activity>
     </application>
 
 </manifest>

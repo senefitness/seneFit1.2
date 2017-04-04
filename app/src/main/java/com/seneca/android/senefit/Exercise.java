@@ -57,6 +57,34 @@ public class Exercise {
         return category;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setLicense_author(String license_author) {
+        this.license_author = license_author;
+    }
+
+    public void setName_original(String name_original) {
+        this.name_original = name_original;
+    }
+
+    public void setCreation_date(String creation_date) {
+        this.creation_date = creation_date;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     @Override
     public String toString() {
         return "Exercise{" +

@@ -2,6 +2,7 @@ package com.seneca.android.senefit;
 
 import android.app.ProgressDialog;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,6 +24,8 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.lang.reflect.Field;
+
 
 public class exlist extends AppCompatActivity {
 
@@ -31,10 +34,12 @@ public class exlist extends AppCompatActivity {
     private ProgressDialog pDialog;
     private Set<Exercise> exercises;
     private DbHelper db;
+    private  int[] prgmImages;
 
 
     // URL to get contacts JSON
     private static String url =  "https://wger.de/api/v2/exercise.json/?language=2&ordering=id&ordering=name&status=2&limit=200";
+    private static String m_url = "https://wger.de/api/v2/muscle.json/?ordering=name";
 
 
     @Override
@@ -46,14 +51,25 @@ public class exlist extends AppCompatActivity {
         db = new DbHelper(this);
 
         Resources r = getResources();
-        String[] items = r.getStringArray(R.array.exercise_array);
+       // String[] items = r.getStringArray(R.array.exercise_array);
+        prgmImages = new int[7]; //changes size when we get more img
+        for (int i=0; i <7; i++) {
+          String url = "drawable/"+"img"+i;
+          prgmImages[i] =  getResources().getIdentifier(url, "drawable", getPackageName());
+        }
 
 
         lv= (ListView) findViewById(R.id.listView);
         //custAdapter cus = new custAdapter(this,items);
        // ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,names);
        // lv.setAdapter(adapter);
+
+
         new GetFitt().execute();
+        new GetMus().execute();
+
+
+
 
 
 
@@ -62,7 +78,7 @@ public class exlist extends AppCompatActivity {
 
     /******************************ASyncTasK*********/
 
-    public class GetFitt extends AsyncTask<Void, Void, Void> {
+    public class GetFitt extends AsyncTask<String, Void, String> {
 
 
         @Override
@@ -77,13 +93,14 @@ public class exlist extends AppCompatActivity {
         }
 
         @Override
-        protected Void doInBackground(Void... arg0) {
+        protected String doInBackground(String... arg0) {
             jsonHandler sh = new jsonHandler();
 
             // Making a request to url and getting response
             String jsonStr = sh.makeServiceCall(url);
 
             Log.e(TAG, "Response from url: " + jsonStr);
+
 
             if (jsonStr != null) {
                 try {
@@ -106,6 +123,7 @@ public class exlist extends AppCompatActivity {
                         String cat = c.getString("category");
 
                         Exercise exercise = new Exercise(name,htmlDescRemover,id,aut,nO,date,cat);
+                        db.addExercise(aut,dsc,name,nO,date,cat,id);
                         exercises.add(exercise);
                     }
                 } catch (final JSONException e) {
@@ -142,7 +160,7 @@ public class exlist extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(Void result) {
+        protected void onPostExecute(String result) {
             super.onPostExecute(result);
             // Dismiss the progress dialog
             if (pDialog.isShowing())
@@ -150,13 +168,46 @@ public class exlist extends AppCompatActivity {
             /**
              * Updating parsed JSON data into ListView
              * */
+            //List<String> newCnt = db.getExercise();
+
             List<Exercise> newItems = new ArrayList<Exercise>();
             newItems.addAll(exercises);
-            custAdapter cus = new custAdapter(exlist.this,newItems);
+            custAdapter cus = new custAdapter(exlist.this,newItems,prgmImages);
+            //ArrayAdapter cus = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1,newCnt);
             lv.setAdapter(cus);
 
 
 
+        }
+    }
+
+    public class GetMus extends AsyncTask<String, Void, String> {
+
+
+        @Override
+        protected String doInBackground(String... arg0) {
+            jsonHandler sh = new jsonHandler();
+
+            // Making a request to url and getting response
+            String jsonStr = sh.makeServiceCall(m_url);
+
+            Log.e(TAG, "Response from url: " + jsonStr);
+
+
+            if (jsonStr != null) {
+                try {
+
+                    db.inserBodyParts(jsonStr);
+                } catch (Exception e) {
+                    Log.e(TAG, "Json parsing error: " + e.getMessage());
+
+                }
+            } else {
+                Log.e(TAG, "Couldn't get json from server.");
+            }
+
+
+            return null;
         }
     }
 
